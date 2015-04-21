@@ -105,12 +105,12 @@ public class Gra {
             for(int i=0;i<p1.getCount();i++)
             {
                 System.out.println("Pozycja czlowieka nr " +i +"  " +"X:"+p1.team.get(i).getPos().getX()+ "  " +"Y:"+p1.team.get(i).getPos().getY());
-                System.out.println("Zycie czlowieka nr " +i +":" +p1.team.get(i).getPointsHealth());
+                System.out.println("Zycie czlowieka nr " +i +": " +p1.team.get(i).getPointsHealth());
             }
             for(int i=0;i<p2.getCount();i++)
             {
                 System.out.println("Pozycja kosmity nr " +i +"  " +"X:"+p2.team.get(i).getPos().getX()+ "  " +"Y:"+p2.team.get(i).getPos().getY());
-                System.out.println("Zycie kosmity nr " +i +":"+p2.team.get(i).getPointsHealth());
+                System.out.println("Zycie kosmity nr " +i +": "+p2.team.get(i).getPointsHealth());
             }
             System.out.println("Atakuja kosmici");
             p2.Attack(p1);

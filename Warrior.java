@@ -137,7 +137,7 @@ public int atakuje = 0;
         }
      int move = (int) this.getPointsMove();
         
-        while(move > 0 && (Math.abs(Defender.getPos().getX() - this.getPos().getX()) != 1 && Math.abs(Defender.getPos().getY() - this.getPos().getY()) != 1))
+        if(move > 0 && (Math.abs(Defender.getPos().getX() - this.getPos().getX()) != 1 && Math.abs(Defender.getPos().getY() - this.getPos().getY()) != 1))
         {
             if(this.getPos().getX() < Defender.getPos().getX())
             {
@@ -155,7 +155,7 @@ public int atakuje = 0;
             {
                 this.setPos(this.getPos().getX(),this.getPos().getY()-1);
             }
-            
+           move--; 
         }
         if (Math.abs(Defender.getPos().getX() - this.getPos().getX()) == 1 && Math.abs(Defender.getPos().getY() - this.getPos().getY()) == 1) {
             atakuje = 1;
