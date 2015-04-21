@@ -43,7 +43,7 @@ public class Player {
     
     public void Attack(Player p2)
     {
-        int przeciwnik = generator.nextInt(p2.getCount()); //losujemy od 0 do p2.getTeamsize().Attack(---)
+        int przeciwnik = generator.nextInt(p2.getCount()); 
         int attacker = generator.nextInt(this.getCount());
         
         this.team.get(attacker).Attack(p2.team.get(przeciwnik));

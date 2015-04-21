@@ -98,7 +98,7 @@ public class Gra {
         p2.addWarrior(a5);
         int ilosc_rund = 0;
         System.out.println("Rozpoczecie gry");
-        while(p1.getCount() != 0 || p2.getCount() != 0)
+        while(p1.getCount() != 0 && p2.getCount() != 0)
         {
             System.out.println("Atakuja ludzie");
             p1.Attack(p2);
@@ -139,13 +139,13 @@ public class Gra {
         if(p1.getCount()==0)
         {
            
-            System.out.println("Armia kosmitow pokonala armie ludzi w "+ilosc_rund +"rundach");
+            System.out.println("Armia kosmitow pokonala armie ludzi w "+ilosc_rund +" rundach");
             System.out.println("Koniec gry");
         }
         
         if(p2.getCount()==0)
         {
-            System.out.println("Armia ludzi pokonala armie kosmitow w "+ilosc_rund +"rundach");
+            System.out.println("Armia ludzi pokonala armie kosmitow w "+ilosc_rund +" rundach");
             System.out.println("Koniec gry");
         }
 //        System.out.println("Przed Atakiem " + SecondCreature.getPointsHealth());
