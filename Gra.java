@@ -59,11 +59,11 @@ public class Gra {
         transport2.add(ufo);
         transport2.add(statek);
 
-        Czlowiek c1 = new Czlowiek(bronie, transport, 300, 200, 1);
-        Czlowiek c2 = new Czlowiek(bronie, transport, 300, 200, 1);
-        Czlowiek c3 = new Czlowiek(bronie, transport, 300, 200, 1);
-        Czlowiek c4 = new Czlowiek(bronie, transport, 300, 200, 1);
-        Czlowiek c5 = new Czlowiek(bronie, transport, 300, 200, 1);
+        Czlowiek c1 = new Czlowiek(bronie, transport, 100, 100, 1);
+        Czlowiek c2 = new Czlowiek(bronie, transport, 100, 100, 1);
+        Czlowiek c3 = new Czlowiek(bronie, transport, 100, 100, 1);
+        Czlowiek c4 = new Czlowiek(bronie, transport, 100, 100, 1);
+        Czlowiek c5 = new Czlowiek(bronie, transport, 100, 100, 1);
 
         c1.setPos(1,2);
         c2.setPos(1,4);
@@ -71,11 +71,11 @@ public class Gra {
         c4.setPos(1,8);
         c5.setPos(1,10);
 
-        Alien a1 = new Alien(bronie2, transport2, 300, 200, 1);
-        Alien a2 = new Alien(bronie2, transport2, 300, 200, 1);
-        Alien a3 = new Alien(bronie2, transport2, 300, 200, 1);
-        Alien a4 = new Alien(bronie2, transport2, 300, 200, 1);
-        Alien a5 = new Alien(bronie2, transport2, 300, 200, 1);
+        Alien a1 = new Alien(bronie2, transport2, 100, 100, 1);
+        Alien a2 = new Alien(bronie2, transport2, 100, 100, 1);
+        Alien a3 = new Alien(bronie2, transport2, 100, 100, 1);
+        Alien a4 = new Alien(bronie2, transport2, 100, 100, 1);
+        Alien a5 = new Alien(bronie2, transport2, 100, 100, 1);
 
         a1.setPos(10, 2);
         a2.setPos(10, 4);
@@ -125,16 +125,16 @@ public class Gra {
                 System.out.println("Zycie kosmity nr " +i +": "+p2.team.get(i).getPointsHealth());
             }
             ilosc_rund++;
-            for(int i=0;i<p1.getCount();i++)
-            {
-                if(p1.team.get(i).getPointsHealth()==0)
-                    p1.removeWarrior(p1.team.get(i));
-            }
-            for(int i=0;i<p2.getCount();i++)
-            {
-                if(p2.team.get(i).getPointsHealth()==0)
-                    p2.removeWarrior(p2.team.get(i));
-            }
+//            for(int i=0;i<p1.getCount();i++)
+//            {
+//                if(p1.team.get(i).getPointsHealth()==0)
+//                    p1.removeWarrior(p1.team.get(i));
+//            }
+//            for(int i=0;i<p2.getCount();i++)
+//            {
+//                if(p2.team.get(i).getPointsHealth()==0)
+//                    p2.removeWarrior(p2.team.get(i));
+//            }
         }
         if(p1.getCount()==0)
         {

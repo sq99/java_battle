@@ -92,7 +92,7 @@ public class Warrior {
         if (ret > 0) {
             ret *= lvlMove / MAX_MOVE_POINTS;
         }
-
+        
         return ret;
     }
 
@@ -107,6 +107,8 @@ public class Warrior {
     
 public int atakuje = 0;
 
+
+    
     public void Attack(Warrior Defender) {
 
         Mover mv = new Mover();
@@ -136,28 +138,41 @@ public int atakuje = 0;
 
         }
      int move = (int) this.getPointsMove();
-        
-        if(move > 0 && (Math.abs(Defender.getPos().getX() - this.getPos().getX()) != 1 && Math.abs(Defender.getPos().getY() - this.getPos().getY()) != 1))
+    
+       while(move > 0 && (Math.abs(Defender.getPos().getX() - this.getPos().getX()) != 1 || Math.abs(Defender.getPos().getY() - this.getPos().getY()) != 1))
         {
             if(this.getPos().getX() < Defender.getPos().getX())
             {
-                 this.setPos(this.getPos().getX()+1,this.getPos().getY());
+                if(this.getPos().getY() < Defender.getPos().getY())
+                    this.setPos(this.getPos().getX()+1,this.getPos().getY()+1);
+                if(this.getPos().getY() > Defender.getPos().getY())
+                    this.setPos(this.getPos().getX()+1,this.getPos().getY()-1);
+                else
+                    this.setPos(this.getPos().getX()+1,this.getPos().getY());
             }
-            else if(this.getPos().getX() > Defender.getPos().getX())
+            
+            if(this.getPos().getX() > Defender.getPos().getX())
             {
-                this.setPos(this.getPos().getX()-1,this.getPos().getY());
+                if(this.getPos().getY() < Defender.getPos().getY())
+                 this.setPos(this.getPos().getX()-1,this.getPos().getY()+1);
+                if(this.getPos().getY() > Defender.getPos().getY())
+                    this.setPos(this.getPos().getX()-1,this.getPos().getY()-1);
+                else
+                    this.setPos(this.getPos().getX()-1,this.getPos().getY());
             }
-            else if(this.getPos().getY() < Defender.getPos().getY())
+            
+            if(this.getPos().getX() == Defender.getPos().getX())
             {
-                this.setPos(this.getPos().getX(),this.getPos().getY()+1);
+                if(this.getPos().getY() < Defender.getPos().getY())
+                 this.setPos(this.getPos().getX(),this.getPos().getY()+1);
+                if(this.getPos().getY() > Defender.getPos().getY())
+                    this.setPos(this.getPos().getX(),this.getPos().getY()-1);
+             
             }
-            else if(this.getPos().getY() > Defender.getPos().getY())
-            {
-                this.setPos(this.getPos().getX(),this.getPos().getY()-1);
-            }
+            
            move--; 
         }
-        if (Math.abs(Defender.getPos().getX() - this.getPos().getX()) == 1 && Math.abs(Defender.getPos().getY() - this.getPos().getY()) == 1) {
+        if (Math.abs(Defender.getPos().getX() - this.getPos().getX()) <= 1 && Math.abs(Defender.getPos().getY() - this.getPos().getY()) <= 1) {
             atakuje = 1;
             Defender.setPointsHealth(Defender.getPointsHealth() - this.getPointsAttack());
 

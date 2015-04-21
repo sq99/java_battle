@@ -32,9 +32,9 @@ public class Player {
         team.add(w);
     }
     
-    public void removeWarrior(Warrior w)
+    public void removeWarrior(int i)
     {
-        team.remove(w);
+        team.remove(i);
     }
     public int getCount()
     {
@@ -49,16 +49,17 @@ public class Player {
         this.team.get(attacker).Attack(p2.team.get(przeciwnik));
         if(this.team.get(attacker).atakuje == 1)
         {    
-            if(p2.team.get(przeciwnik).getPointsHealth() == 0)
+            if(p2.team.get(przeciwnik).getPointsHealth() <= 0)
             {
                 System.out.println("Postac nr " +attacker + " atakuje postac nr " +przeciwnik +" pozbawiajac ja zycia.");
-                p2.removeWarrior(p2.team.get(przeciwnik));
+                p2.removeWarrior(przeciwnik);
             }
-        System.out.println("Postac nr " +attacker + " atakuje postac nr " +przeciwnik + " pozostawiajac jej " +p2.team.get(przeciwnik).getPointsHealth() +" punktow zycia");
+            else    
+            System.out.println("Postac nr " +attacker + " atakuje postac nr " +przeciwnik + " pozostawiajac jej " +p2.team.get(przeciwnik).getPointsHealth() +" punktow zycia");
         }
         else
         System.out.println("Postac nr " +attacker + " idzie w strone postaci nr "+przeciwnik);
-// this.getTeam.get(2) i to wrzucamy za (---)
+
     }
     
     
