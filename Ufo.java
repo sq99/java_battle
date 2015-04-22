@@ -11,7 +11,7 @@ package lab2;
  */
 public class Ufo extends Mover{
     
-    int moc = 10;
+    int moc = 2;
     
     @Override
     public int getMovePoints() {

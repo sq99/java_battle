@@ -11,7 +11,7 @@ package lab2;
  */
 public class StatekKosm extends Mover{
     
-    int moc = 20;
+    int moc = 2;
     
     @Override
     public int getMovePoints() {

@@ -11,7 +11,7 @@ package lab2;
  */
 public class Kon extends Mover{
     
-    int szybkosc = 5;
+    int szybkosc = 8;
     
     @Override
     public int getMovePoints() {

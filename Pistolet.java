@@ -12,7 +12,7 @@ package lab2;
  */
 public class Pistolet extends Weapon {
     
-    float moc = 10;
+    float moc = 1;
     float kaliber = 1;
     
     float zasieg = 4;

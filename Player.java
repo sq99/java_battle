@@ -43,8 +43,16 @@ public class Player {
     
     public void Attack(Player p2)
     {
+        if(p2.getCount()==0 || this.getCount()==0)
+        {
+            return;
+        }
+        System.out.println("count2="+p2.getCount());
+        System.out.println("count1="+this.getCount());
         int przeciwnik = generator.nextInt(p2.getCount()); 
+        System.out.println("przeciwnik="+przeciwnik);
         int attacker = generator.nextInt(this.getCount());
+        System.out.println("attacker="+attacker);
         
         this.team.get(attacker).Attack(p2.team.get(przeciwnik));
         if(this.team.get(attacker).atakuje == 1)

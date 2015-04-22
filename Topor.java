@@ -12,7 +12,7 @@ package lab2;
 public class Topor extends Weapon {
     
     float dlugosc = 1;
-    float jakosc = 5;
+    float jakosc = 1;
     
     float zasieg = 1;
     
