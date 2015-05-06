@@ -20,7 +20,8 @@ public class Lab2 {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        Gra gra = new Gra();
+        Gra gra = Gra.getInstance();
+        //Gra gra = new Gra();
         gra.rozgrywka();
          
          

@@ -6,25 +6,32 @@
 
 package lab2;
 
+import java.util.Random;
 /**
  *
  * @author fzeglen
  */
 public class Miecz extends Weapon {
     
+    Random generator = new Random();
+    
     float dlugosc = 2;
-    float jakosc = 2;
+    float  moc = 2;
     
     float zasieg = 1;
     
+    int forwho = 1;
+    
+    int jakosc;
+    
     public Miecz()
     { 
-        
+        jakosc = generator.nextInt(5);
     }
 
     @Override
     public int getHitPoints() {
-        return super.getHitPoints() * (int)dlugosc + (int)jakosc;
+        return (super.getHitPoints() * (int)dlugosc + (int)moc) * jakosc;
     }
     
 //    @Override

@@ -6,7 +6,9 @@
 package lab2;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+
 
 /**
  *
@@ -14,25 +16,56 @@ import java.util.List;
  */
 public class Alien extends Warrior{
   
+    String name;
     
     public Alien(List<Weapon> bronie2, List<Mover> transport2,int lvlA,int lvlM,int lvlH)
     {
         super(bronie2,transport2,lvlA,lvlM,lvlH);
         this.bronie = bronie2;
         this.transport = transport2;
+        name = "kosmita";
        
         
         
     }
+     
+    @Override
+    public String name()
+    {
+           return name;
+    }
+    
     
     @Override
     public float getPointsAttack() {
         float ret =0;
-        for(int i = 0; i < bronie.size();i++)
+        Iterator iter1 = bronie.iterator();
+//        for(int i = 0; i < bronie.size();i++)
+//        {
+//            
+//              
+//                Weapon wp = (Weapon)bronie.get(i);
+//                if(wp.forwho == 1)
+//                ret += wp.getHitPoints();
+//              
+//                else
+//                ret +=(wp.getHitPoints()/2);
+//              //else
+//              //{
+//               //zmniejsza statystyki jesli bron   
+//              //}
+//        }
+        while(iter1.hasNext())
         {
-              Weapon wp = (Weapon)bronie.get(i);
-              ret += wp.getHitPoints();
-        }        
+            Object wp = (Object)iter1.next();
+            if(((Weapon)wp).forwho == 2)
+               ret+=((Weapon)wp).getHitPoints();
+             
+              else
+               ret+=(((Weapon)wp).getHitPoints()/2);
+
+            
+        }
         if(ret>0){
         ret *= lvlAttack/MAX_ATT_POINTS;     
         }   
@@ -42,15 +75,22 @@ public class Alien extends Warrior{
     
     @Override
     public float getPointsMove() {
-          float ret =0;
-        for(int i = 0; i < transport.size();i++)
+        float ret = 0;
+        Iterator iter2 = transport.iterator();
+
+        while(iter2.hasNext())
         {
-              Mover mv = (Mover)transport.get(i);
-              ret += mv.getMovePoints();
-        }        
-       if(ret>0){
-       ret *= lvlMove/MAX_MOVE_POINTS;    
-       } 
+            Object mv = (Object)iter2.next();
+            ret+=((Mover)mv).getMovePoints();
+        }
+        
+//        for (int i = 0; i < transport.size(); i++) {
+//            Mover mv = (Mover) transport.get(i);
+//            ret += mv.getMovePoints();
+//        }
+        if (ret > 0) {
+            ret *= lvlMove / MAX_MOVE_POINTS;
+        }
         
         return ret;
     }

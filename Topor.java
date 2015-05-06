@@ -5,25 +5,39 @@
  */
 package lab2;
 
+import java.util.Random;
 /**
  *
  * @author fzeglen
  */
 public class Topor extends Weapon {
     
+    Random generator = new Random();
+    
     float dlugosc = 1;
-    float jakosc = 1;
+    float moc = 1;
     
     float zasieg = 1;
     
+    int forwho = 2;
+    
+    int jakosc;
+
+    
+    
     public Topor()
     { 
-        
+        jakosc = generator.nextInt(5);
     }
 
     @Override
     public int getHitPoints() {
-        return super.getHitPoints() * (int)dlugosc + (int)jakosc;
+       
+        //if(postac == 2)
+        {
+        
+            return (super.getHitPoints() * (int)dlugosc + (int)moc)* jakosc;
+        }
     }
     
 //    @Override
