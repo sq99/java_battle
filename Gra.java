@@ -15,24 +15,13 @@ import java.util.Random;
  */
 public class Gra {
     
-    private static volatile Gra instance = null;
-    
-    Player p1 = new Player();
-    Player p2 = new Player();
-    
-    public static Gra getInstance() {
-        if (instance == null) {
-            synchronized (Gra .class) {
-                if (instance == null) {
-                    instance = new Gra();
-                }
-            }
-        }
-        return instance;
-    }
+   Gra(){}
    
-    Gra(){
-    Random generator = new Random(System.currentTimeMillis()); 
+           
+           
+    public void rozgrywka()
+    {
+        Random generator = new Random(System.currentTimeMillis()); 
         List<Weapon> bronie = new ArrayList<Weapon>();
         List<Weapon> bronie2 = new ArrayList<Weapon>();
 
@@ -69,18 +58,13 @@ public class Gra {
 
         transport2.add(ufo);
         transport2.add(statek);
-        
-       
-            
+
         Czlowiek c1 = new Czlowiek(bronie, transport, 100, 100, 1);
         Czlowiek c2 = new Czlowiek(bronie, transport, 100, 100, 1);
         Czlowiek c3 = new Czlowiek(bronie, transport, 100, 100, 1);
         Czlowiek c4 = new Czlowiek(bronie, transport, 100, 100, 1);
-        
-        
-        
         Czlowiek c5 = new Czlowiek(bronie, transport, 100, 100, 1);
-       
+
         c1.setPos(1,2);
         c2.setPos(1,4);
         c3.setPos(1,6);
@@ -92,34 +76,27 @@ public class Gra {
         Alien a3 = new Alien(bronie2, transport2, 100, 100, 1);
         Alien a4 = new Alien(bronie2, transport2, 100, 100, 1);
         Alien a5 = new Alien(bronie2, transport2, 100, 100, 1);
-        
+
         a1.setPos(10, 2);
         a2.setPos(10, 4);
         a3.setPos(10, 6);
         a4.setPos(10, 8);
         a5.setPos(10, 10);
 
-     
+        Player p1 = new Player();
         p1.addWarrior(c1);
         p1.addWarrior(c2);
         p1.addWarrior(c3);
         p1.addWarrior(c4);
         p1.addWarrior(c5);
 
-       
+        Player p2 = new Player();
         p2.addWarrior(a1);
         p2.addWarrior(a2);
         p2.addWarrior(a3);
         p2.addWarrior(a4);
         p2.addWarrior(a5);
-        //int ilosc_rund = 0;
-   }
-   
-           
-           
-    public void rozgrywka()
-    {
-       int ilosc_rund=0;
+        int ilosc_rund = 0;
         System.out.println("Rozpoczecie gry");
         while(p1.getCount() != 0 && p2.getCount() != 0)
         {
@@ -140,33 +117,28 @@ public class Gra {
             
             System.out.println("Atakuja ludzie");
             p1.Attack(p2);
-            
-//            for(int i=0;i<p1.getCount();i++)
-//            {
-//                System.out.println("Pozycja czlowieka nr " +i +"  " +"X:"+p1.team.get(i).getPos().getX()+ "  " +"Y:"+p1.team.get(i).getPos().getY());
-//                System.out.println("Zycie czlowieka nr " +i +": " +p1.team.get(i).getPointsHealth());
-//            }
-//            for(int i=0;i<p2.getCount();i++)
-//            {
-//                System.out.println("Pozycja kosmity nr " +i +"  " +"X:"+p2.team.get(i).getPos().getX()+ "  " +"Y:"+p2.team.get(i).getPos().getY());
-//                System.out.println("Zycie kosmity nr " +i +": "+p2.team.get(i).getPointsHealth());
-//            }
-            p1.printStats();
-            p2.printStats();
+            for(int i=0;i<p1.getCount();i++)
+            {
+                System.out.println("Pozycja czlowieka nr " +i +"  " +"X:"+p1.team.get(i).getPos().getX()+ "  " +"Y:"+p1.team.get(i).getPos().getY());
+                System.out.println("Zycie czlowieka nr " +i +": " +p1.team.get(i).getPointsHealth());
+            }
+            for(int i=0;i<p2.getCount();i++)
+            {
+                System.out.println("Pozycja kosmity nr " +i +"  " +"X:"+p2.team.get(i).getPos().getX()+ "  " +"Y:"+p2.team.get(i).getPos().getY());
+                System.out.println("Zycie kosmity nr " +i +": "+p2.team.get(i).getPointsHealth());
+            }
             System.out.println("Atakuja kosmici");
             p2.Attack(p1);
-            p1.printStats();
-            p2.printStats();
-//            for(int i=0;i<p1.getCount();i++)
-//            {
-//                System.out.println("Pozycja czlowieka nr " +i +"  " +"X:"+p1.team.get(i).getPos().getX()+ "  " +"Y:"+p1.team.get(i).getPos().getY());
-//                System.out.println("Zycie czlowieka nr " +i +": " +p1.team.get(i).getPointsHealth());
-//            }
-//            for(int i=0;i<p2.getCount();i++)
-//            {
-//                System.out.println("Pozycja kosmity nr " +i +"  " +"X:"+p2.team.get(i).getPos().getX()+ "  " +"Y:"+p2.team.get(i).getPos().getY());
-//                System.out.println("Zycie kosmity nr " +i +": "+p2.team.get(i).getPointsHealth());
-//            }
+            for(int i=0;i<p1.getCount();i++)
+            {
+                System.out.println("Pozycja czlowieka nr " +i +"  " +"X:"+p1.team.get(i).getPos().getX()+ "  " +"Y:"+p1.team.get(i).getPos().getY());
+                System.out.println("Zycie czlowieka nr " +i +": " +p1.team.get(i).getPointsHealth());
+            }
+            for(int i=0;i<p2.getCount();i++)
+            {
+                System.out.println("Pozycja kosmity nr " +i +"  " +"X:"+p2.team.get(i).getPos().getX()+ "  " +"Y:"+p2.team.get(i).getPos().getY());
+                System.out.println("Zycie kosmity nr " +i +": "+p2.team.get(i).getPointsHealth());
+            }
             ilosc_rund++;
 //            for(int i=0;i<p1.getCount();i++)
 //            {

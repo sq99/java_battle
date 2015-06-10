@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.lang.Math;
-import java.util.Iterator;
 
 /**
  *
@@ -22,13 +21,6 @@ public class Warrior {
     public static final int MAX_HEALTH_POINTS = 10;
     public static final int MAX_POS_X = 8;
     public static final int MAX_POS_Y = 8;
-    
-    String name;
-    
-    public String name()
-    {
-           return name;
-    }
 
     private Vec2 Pos = new Vec2();
 
@@ -66,7 +58,6 @@ public class Warrior {
         this.lvlMove = lvlM;
         this.lvlHealth = lvlH;
         this.pointsHealth = 100;
-        name = "warrior";
     }
 
     /**
@@ -74,14 +65,9 @@ public class Warrior {
      */
     public float getPointsAttack() {
         float ret = 0;
-        Iterator iter1 = bronie.iterator();
-//        for (int i = 0; i < bronie.size(); i++) {
-//            Weapon wp = (Weapon) bronie.get(i);
-//            ret += wp.getHitPoints();
-        while(iter1.hasNext())
-        {
-            Object wp = (Object)iter1.next();
-            ret+=((Weapon)wp).getHitPoints();
+        for (int i = 0; i < bronie.size(); i++) {
+            Weapon wp = (Weapon) bronie.get(i);
+            ret += wp.getHitPoints();
         }
         if (ret > 0) {
             ret *= lvlAttack / MAX_ATT_POINTS;
@@ -99,18 +85,10 @@ public class Warrior {
      */
     public float getPointsMove() {
         float ret = 0;
-        Iterator iter2 = transport.iterator();
-
-        while(iter2.hasNext())
-        {
-            Object mv = (Object)iter2.next();
-            ret+=((Mover)mv).getMovePoints();
+        for (int i = 0; i < transport.size(); i++) {
+            Mover mv = (Mover) transport.get(i);
+            ret += mv.getMovePoints();
         }
-        
-//        for (int i = 0; i < transport.size(); i++) {
-//            Mover mv = (Mover) transport.get(i);
-//            ret += mv.getMovePoints();
-//        }
         if (ret > 0) {
             ret *= lvlMove / MAX_MOVE_POINTS;
         }
@@ -133,7 +111,7 @@ public int atakuje = 0;
     
     public void Attack(Warrior Defender) {
 
-       // Mover mv = new Mover();
+        Mover mv = new Mover();
 
 //      if(bronie.get(randBron).getRangePoints() >=  Math.hypot(Defender.getPos().getX()-this.getPos().getX(),Defender.getPos().getY()-this.getPos().getY())) {
 //          Defender.setPointsHealth(Defender.getPointsHealth() - bronie.get(randBron).getHitPoints());

@@ -17,8 +17,6 @@ public class Pistolet extends Weapon {
     
     float zasieg = 4;
     
-    int forwho = 2;
-    
     /**
      *
      */
