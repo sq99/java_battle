@@ -11,6 +11,7 @@ package lab2;
  */
 public class Weapon {
     
+    int forwho = 0;
     Weapon()
     {
     

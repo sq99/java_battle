@@ -12,17 +12,21 @@ package lab2;
  */
 public class Pistolet extends Weapon {
     
+    private WeaponType weaponType;
+    
     float moc = 1;
     float kaliber = 1;
     
     float zasieg = 4;
     
+    int forwho = 2;
+    
     /**
      *
      */
-    public Pistolet()
+    public Pistolet(WeaponType wt)
     {
-        
+        this.weaponType = wt;
     }
     
     @Override

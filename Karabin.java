@@ -5,20 +5,29 @@
  */
 package lab2;
 
+import java.util.Random;
 /**
  *
  * @author serq9_000
  */
 public class Karabin extends Weapon {
     
+    private WeaponType weaponType;
+    
+    
+    
     float moc = 12;
     float kaliber = 2;
     
     float zasieg = 1;
     
-    public Karabin()
+    int forwho = 1;
+    
+    
+    
+    public Karabin(WeaponType wt)
     {
-        
+        this.weaponType = wt;
     }
     
     @Override

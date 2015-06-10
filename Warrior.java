@@ -9,18 +9,28 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.lang.Math;
+import java.util.Iterator;
+import java.util.Observable;
 
 /**
  *
  * @author Filip
  */
-public class Warrior {
+public class Warrior { // extends Observable {
 
     public static final int MAX_ATT_POINTS = 100;
     public static final int MAX_MOVE_POINTS = 100;
     public static final int MAX_HEALTH_POINTS = 10;
     public static final int MAX_POS_X = 8;
     public static final int MAX_POS_Y = 8;
+    
+    
+    String classname;
+    
+    public String classname()
+    {
+           return classname;
+    }
 
     private Vec2 Pos = new Vec2();
 
@@ -46,6 +56,12 @@ public class Warrior {
     protected float pointsAttack;
     protected float pointsMove;
     protected float pointsHealth;
+    
+    protected int cuda;
+    
+    //setchanged
+    //notify observers
+    //private WarriorName name;
 
     List<Weapon> bronie = new ArrayList<Weapon>();
     List<Mover> transport = new ArrayList<Mover>();
@@ -58,16 +74,33 @@ public class Warrior {
         this.lvlMove = lvlM;
         this.lvlHealth = lvlH;
         this.pointsHealth = 100;
+        classname = "warrior";
+        this.cuda = 0;
+ 
+        //this.name = name;
     }
-
+    
+//    public static Warrior getInstance(WarriorName name) {
+//		return nazguls.get(name);
+//	}
+//	
+	//public WarriorName getName() {
+	//	return name;
+	//}
+   
     /**
      * @return the pointsAttack
      */
     public float getPointsAttack() {
         float ret = 0;
-        for (int i = 0; i < bronie.size(); i++) {
-            Weapon wp = (Weapon) bronie.get(i);
-            ret += wp.getHitPoints();
+        Iterator iter1 = bronie.iterator();
+//        for (int i = 0; i < bronie.size(); i++) {
+//            Weapon wp = (Weapon) bronie.get(i);
+//            ret += wp.getHitPoints();
+        while(iter1.hasNext())
+        {
+            Object wp = (Object)iter1.next();
+            ret+=((Weapon)wp).getHitPoints();
         }
         if (ret > 0) {
             ret *= lvlAttack / MAX_ATT_POINTS;
@@ -85,10 +118,18 @@ public class Warrior {
      */
     public float getPointsMove() {
         float ret = 0;
-        for (int i = 0; i < transport.size(); i++) {
-            Mover mv = (Mover) transport.get(i);
-            ret += mv.getMovePoints();
+        Iterator iter2 = transport.iterator();
+
+        while(iter2.hasNext())
+        {
+            Object mv = (Object)iter2.next();
+            ret+=((Mover)mv).getMovePoints();
         }
+        
+//        for (int i = 0; i < transport.size(); i++) {
+//            Mover mv = (Mover) transport.get(i);
+//            ret += mv.getMovePoints();
+//        }
         if (ret > 0) {
             ret *= lvlMove / MAX_MOVE_POINTS;
         }
@@ -111,7 +152,7 @@ public int atakuje = 0;
     
     public void Attack(Warrior Defender) {
 
-        Mover mv = new Mover();
+       // Mover mv = new Mover();
 
 //      if(bronie.get(randBron).getRangePoints() >=  Math.hypot(Defender.getPos().getX()-this.getPos().getX(),Defender.getPos().getY()-this.getPos().getY())) {
 //          Defender.setPointsHealth(Defender.getPointsHealth() - bronie.get(randBron).getHitPoints());
@@ -143,30 +184,46 @@ public int atakuje = 0;
         {
             if(this.getPos().getX() < Defender.getPos().getX())
             {
-                if(this.getPos().getY() < Defender.getPos().getY())
+                if(this.getPos().getY() < Defender.getPos().getY()){
                     this.setPos(this.getPos().getX()+1,this.getPos().getY()+1);
-                if(this.getPos().getY() > Defender.getPos().getY())
+                    //notifyObservers(0);
+                }
+                if(this.getPos().getY() > Defender.getPos().getY()){
                     this.setPos(this.getPos().getX()+1,this.getPos().getY()-1);
-                else
+                    //notifyObservers(0);
+                }
+                else{
                     this.setPos(this.getPos().getX()+1,this.getPos().getY());
+                    //notifyObservers(0);
+                }
             }
             
             if(this.getPos().getX() > Defender.getPos().getX())
             {
-                if(this.getPos().getY() < Defender.getPos().getY())
-                 this.setPos(this.getPos().getX()-1,this.getPos().getY()+1);
-                if(this.getPos().getY() > Defender.getPos().getY())
+                if(this.getPos().getY() < Defender.getPos().getY()){
+                    this.setPos(this.getPos().getX()-1,this.getPos().getY()+1);
+                    //notifyObservers(0);
+                }
+                if(this.getPos().getY() > Defender.getPos().getY()){
                     this.setPos(this.getPos().getX()-1,this.getPos().getY()-1);
-                else
+                    //notifyObservers(0);
+                }
+                else{
                     this.setPos(this.getPos().getX()-1,this.getPos().getY());
+                    //notifyObservers(0);
+                }
             }
             
             if(this.getPos().getX() == Defender.getPos().getX())
             {
-                if(this.getPos().getY() < Defender.getPos().getY())
-                 this.setPos(this.getPos().getX(),this.getPos().getY()+1);
-                if(this.getPos().getY() > Defender.getPos().getY())
+                if(this.getPos().getY() < Defender.getPos().getY()){
+                    this.setPos(this.getPos().getX(),this.getPos().getY()+1);
+                    //notifyObservers(0);
+                }
+                if(this.getPos().getY() > Defender.getPos().getY()){
                     this.setPos(this.getPos().getX(),this.getPos().getY()-1);
+                    //notifyObservers(0);
+                }
              
             }
             
@@ -202,6 +259,15 @@ public int atakuje = 0;
      */
     public void setPointsHealth(float pointsHealth) {
         this.pointsHealth = pointsHealth;
+        //notifyObservers();
+        
     }
-
+    
+    public String getHash()
+    {            
+        return this.classname+this.lvlAttack+this.lvlMove;
+    
+    }
+    
+    
 }

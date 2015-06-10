@@ -11,7 +11,14 @@ package lab2;
  */
 public class Kon extends Mover{
     
-    int szybkosc = 8;
+    int szybkosc; //= 8;
+    int stamina; //= 10;
+    
+    public Kon(KonBuilder kb)
+    {
+        this.szybkosc = kb.szybkosc.szybkosc;
+        this.stamina = kb.stamina.stamina;
+    }
     
     @Override
     public int getMovePoints() {
